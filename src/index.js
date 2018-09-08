@@ -1,23 +1,7 @@
 import { request } from 'graphql-request';
 
-const query = `{
-  getCup(id: 1118) {
-    actions {
-      nodes {
-      	time
-      	ratio
-      }
-    }
-  }
-}
-`
-
 function collateralization_chart_func() {
 	var timeFormat = 'MM/DD/YYYY HH:mm';
-
-	function newDate(days) {
-		return moment().add(days, 'd').toDate();
-	}
 
 	function myMap(item)
 	{
@@ -27,35 +11,9 @@ function collateralization_chart_func() {
 		};
 	}
 
-	function getLinearData()
+	function reloadData(cdp_id)
 	{
-		return [
-			{
-				x: newDate(0),
-				y: 80,
-			},
-			{
-				x: newDate(1),
-				y: 200
-			},
-			{
-				x: newDate(2),
-				y: 150
-			},
-					{
-				x: newDate(3),
-				y: 270
-			},
-			{
-				x: newDate(4),
-				y: 360
-			},
-			{
-				x: newDate(5),
-				y: 100
-			}
-		];
-	}
+		var query = '{ getCup(id:' + cdp_id + ') { actions { nodes {time ratio} } } }';
 
 			request('https://graphql.makerdao.com/v1', query).then(data => {
 			var timeSeries = data.getCup.actions.nodes.map(myMap);
@@ -89,18 +47,23 @@ function collateralization_chart_func() {
 						}],
 						yAxes: [{
 							ticks: {
-								min: 100,
-								max: 500
+								min: 100
 							},
 							scaleLabel: {
 								display: true,
-								labelString: 'Liquidation'
+								labelString: 'Сollateral-to-debt Ratio '
 							}
 						}]
 					},
 				}
 			});
 		});
+	};
+
+	document.getElementById('update').addEventListener('click', function() {
+		var cdp_id = document.getElementById('cdp-id').value;
+		reloadData(cdp_id);
+	});
 };
 
 collateralization_chart_func();
