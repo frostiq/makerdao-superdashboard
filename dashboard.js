@@ -1,21 +1,25 @@
 const { request } = require('graphql-request')
 
-const query = `{
-  getCup(id: 1118) {
-    actions {
-      nodes {
-      	time
-      	ratio
-      }
-    }
-  }
+function requestCupActions() {
+	const query = `{
+	  getCup(id: 1118) {
+	    actions {
+	      nodes {
+	      	time
+	      	ratio
+	      }
+	    }
+	  }
+	}
+	`
+
+	request('https://graphql.makerdao.com/v1', query).then(data => showDataInformation(data))
 }
-`
 
-request('https://graphql.makerdao.com/v1', query).then(data => showDataInformation(data))
-
-function showDataInformation(dataArray) {
-	for (var i = 0; i < dataArray.getCup.actions.nodes.length; i++) {
-		console.log(dataArray.getCup.actions.nodes[0]);
+function printDocData(jsonResponse) {
+	for (var i = 0; i < jsonResponse.getCup.actions.nodes.length; i++) {
+		console.log(jsonResponse.getCup.actions.nodes[2]);
 	}
 }
+
+requestCupActions()
