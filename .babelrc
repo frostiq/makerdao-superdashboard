@@ -1,0 +1,14 @@
+{
+  "comments": false,
+  "presets": [
+    ["@babel/preset-flow"],
+    [
+      "@babel/preset-env",
+      {
+        "targets": "> 0.25%, not dead",
+        "useBuiltIns": "entry"
+      }
+    ]
+  ],
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
