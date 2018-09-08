@@ -77,8 +77,9 @@
     "webpack-merge": "4.1.4"
   },
   "dependencies": {
-    "graphql-request": "^1.8.2",
     "@babel/runtime": "7.0.0",
-    "@webcomponents/webcomponentsjs": "2.0.4"
+    "@webcomponents/webcomponentsjs": "2.0.4",
+    "axios": "^0.18.0",
+    "graphql-request": "^1.8.2"
   }
 }

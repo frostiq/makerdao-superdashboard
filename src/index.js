@@ -11,15 +11,27 @@ function collateralization_chart_func() {
 		};
 	}
 
+	function myMap2(item)
+	{
+		return {
+			x: moment.unix(item.time).toDate(),
+			y: item.close
+		};
+	}
+
 	function reloadData(cdp_id)
 	{
 		var query = '{ getCup(id:' + cdp_id + ') { actions { nodes {time ratio} } } }';
 
-			request('https://graphql.makerdao.com/v1', query).then(data => {
+		request('https://graphql.makerdao.com/v1', query).then(data => {
 			var timeSeries = data.getCup.actions.nodes.map(myMap);
 
-			var ctx = document.getElementById("collateralization-chart");
-			var myChart = new Chart(ctx, {
+			axios.get('https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=30&aggregate=1')
+			 	.then(function(response) {
+			 		var rates = response.data.Data.map(myMap2);
+
+			 		var ctx = document.getElementById("collateralization-chart");
+					var myChart = new Chart(ctx, {
 				type: 'line',
 				data: {
 					datasets: [{
@@ -28,6 +40,13 @@ function collateralization_chart_func() {
 						borderColor: 'rgb(255, 99, 132)',
 						fill: false,
 						data: timeSeries
+					},
+					{
+						label: 'Rates',
+						backgroundColor: 'rgb(255, 99, 132)',
+						borderColor: 'rgb(255, 99, 132)',
+						fill: false,
+						data: rates
 					}]
 				},
 				options: {
@@ -51,11 +70,12 @@ function collateralization_chart_func() {
 							},
 							scaleLabel: {
 								display: true,
-								labelString: 'Сollateral-to-debt Ratio '
+								labelString: 'Сollateral-to-debt Ratio, %'
 							}
 						}]
 					},
 				}
+			});
 			});
 		});
 	};
