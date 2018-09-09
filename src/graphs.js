@@ -14,7 +14,7 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, lquiRatePo
                     data: collatRatioPoints
                 },
                 {
-                    label: 'ETH/USD Ratio',
+                    label: 'ETH/USD Rate',
                     backgroundColor: 'rgb(64,224,208)',
                     borderColor: 'rgb(64,224,208)',
                     borderDash: [4, 5],
@@ -22,7 +22,7 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, lquiRatePo
                     data: filteredRatePoints
                 },
                 {
-                    label: 'ETH/USD Liquidation Ratio',
+                    label: 'ETH/USD Liquidation Rate',
                   backgroundColor: '#CE966A',
                   borderColor: '#CE966A',
                     borderDash: [4, 5],
