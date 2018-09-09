@@ -98,7 +98,7 @@ export function drawScatterChart(mdTimeSeries, minTime, maxTime) {
         options: {
           title: {
             display: true,
-            text: 'SCATTER VIEW'
+            text: 'SCATTERED VIEW'
             },
             plugins: {
                 datalabels: {
@@ -157,7 +157,7 @@ export function drawBalanceChart(debtPoints, collateralUsdPoints, minTime, maxTi
         options: {
           title: {
             display: true,
-            text: 'CDP OPERATIONS'
+            text: 'CDP AMOUNTS'
             },
             plugins: {
                 datalabels: {
@@ -216,7 +216,7 @@ export function drawEventsChart(debtPoints, minTime, maxTime) {
         options: {
           title: {
             display: true,
-            text: 'SEQUENTIAL LINE'
+            text: 'CDP OPERATIONS'
             },
             maintainAspectRatio: false,
             plugins: {
