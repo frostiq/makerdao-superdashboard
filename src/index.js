@@ -1,11 +1,11 @@
 import { request } from 'graphql-request';
-import { drawRatioChart, drawScatterChart } from './graphs.js';
+import { drawRatioChart, drawScatterChart, drawBalanceChart } from './graphs.js';
 const _ = require('lodash');
 
 function collateralization_chart_func() {
 
     function reloadData(cdp_id) {
-        var query = '{ getCup(id:' + cdp_id + ') { actions { nodes {time ratio ink art pip} } } }';
+        var query = '{ getCup(id:' + cdp_id + ') { actions { nodes {time ratio ink art pip tab} } } }';
 
         request('https://graphql.makerdao.com/v1', query).then(data => {
             var cdp_data = data.getCup.actions.nodes.map(function (item) {
@@ -14,7 +14,8 @@ function collateralization_chart_func() {
                     ratio: item.ratio,
                     ink: item.ink,
                     art: item.art,
-                    pip: item.pip
+                    pip: item.pip,
+                    tab: item.tab
                 };
             });
 
@@ -56,7 +57,23 @@ function collateralization_chart_func() {
                         };
                     });
 
-                    drawScatterChart(mdTimeSeries, minTime, maxTime)
+                    drawScatterChart(mdTimeSeries, minTime, maxTime);
+
+                    var debtTimeSeries = cdp_data.map(function (item) {
+                        return {
+                            x: item.time.toDate(),
+                            y: item.art
+                        };
+                    });
+
+                    var collateralUsdTimeSeries = cdp_data.map(function (item) {
+                        return {
+                            x: item.time.toDate(),
+                            y: item.tab
+                        };
+                    });
+
+                    drawBalanceChart(debtTimeSeries, collateralUsdTimeSeries);
                 });
         });
     };

@@ -89,3 +89,55 @@ export function drawScatterChart(mdTimeSeries, minTime, maxTime) {
         }
     });
 }
+
+export function drawBalanceChart(debtPoints, collateralUsdPoints) {
+    var ctx_chart = document.getElementById("balance-chart");
+    new Chart(ctx_chart, {
+        type: 'line',
+        data: {
+            datasets: [
+                {
+                    label: 'Collateral amount',
+                    lineTension: 0,
+                    backgroundColor: 'black',
+                    borderColor: 'orange',
+                    fill: false,
+                    data: collateralUsdPoints
+                },
+                {
+                    label: 'Debt amount',
+                    lineTension: 0,
+                    backgroundColor: 'black',
+                    borderColor: 'grey',
+                    fill: false,
+                    data: debtPoints
+                }]
+        },
+        options: {
+            title: {
+                text: 'CDP Chart'
+            },
+            scales: {
+                xAxes: [{
+                    type: 'time',
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Date'
+                    },
+                    time: {
+                        unit: 'day'
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        //min: 100
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Amount, USD'
+                    }
+                }]
+            },
+        }
+    });
+}
