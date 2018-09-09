@@ -47,7 +47,13 @@ function collateralization_chart_func() {
 
 			 		var perDayPoints = new Array();
 			 		filteredRatePoints.forEach(i => {
-			 			var target_cdp_state = cdp_data.filter(p => firstDate.isBefore(p.x))[0];
+			 			var currentDt = i.x;
+
+			 			var target_cdp_state = cdp_data.filter(p => currentDt.isAfter(p.time))
+				 			.sort(function(a,b) {
+		        				return b.time.isAfter(a.time);
+		   					 })[0];;
+
 			 			var ratio = 100 * target_cdp_state.ink * i.y / target_cdp_state.art;
 
 			 			perDayPoints.push({x: i.x, y: ratio });
@@ -67,8 +73,8 @@ function collateralization_chart_func() {
 					},
 					{
 						label: 'ETH/USD Rate',
-						backgroundColor: 'orange',
-						borderColor: 'black',
+						backgroundColor: 'black',
+						borderColor: 'grey',
 						fill: false,
 						data: filteredRatePoints
 					}]
@@ -108,8 +114,7 @@ function collateralization_chart_func() {
 					type: 'scatter',
 					data: {
 					datasets: [{
-						label: 'Makerdao Operations',
-						backgroundColor: 'rgb(255, 99, 132)',
+						label: 'MakerDAO Operations',
 						borderColor: 'rgb(255, 99, 132)',
 						fill: false,
 						data: mdTimeSeries
@@ -136,7 +141,6 @@ function collateralization_chart_func() {
 								},
 								scaleLabel: {
 									display: true,
-									labelString: 'Сollateral-to-debt Ratio, %'
 								}
 							}]
 						},
