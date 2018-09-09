@@ -1,3 +1,4 @@
+require('offline-plugin/runtime').install();
 import { request } from 'graphql-request';
 import { drawRatioChart, drawScatterChart, drawBalanceChart, drawEventsChart } from './graphs.js';
 const _ = require('lodash');
