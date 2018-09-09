@@ -77,8 +77,8 @@ export function drawScatterChart(mdTimeSeries, minTime, maxTime) {
         data: {
             datasets: [{
                 label: 'MakerDAO Operations',
-              borderColor: '#FFBD00',
-              backgroundColor: '#FFBD00',
+              borderColor: '#FFEB41',
+              backgroundColor: '#FFEB41',
       
                 fill: true,
                 data: mdTimeSeries
