@@ -23,8 +23,8 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, lquiRatePo
                 },
                 {
                     label: 'ETH/USD Liquidation Rate',
-                  backgroundColor: '#C17750',
-                  borderColor: '#C17750',
+                  backgroundColor: '#CE966A',
+                  borderColor: '#CE966A',
                     borderDash: [4, 5],
                     fill: false,
                     data: lquiRatePoints
