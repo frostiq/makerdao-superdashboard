@@ -35,7 +35,7 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, lquiRatePo
           
         title: {
           display: true,
-                text: 'CDP Chart'
+          text: 'Collateralization Rate Chart'
             },
             plugins: {
                 datalabels: {
@@ -98,7 +98,7 @@ export function drawScatterChart(mdTimeSeries, minTime, maxTime) {
         options: {
           title: {
             display: true,
-                text: 'CDP Chart'
+            text: 'Scatter view'
             },
             plugins: {
                 datalabels: {
