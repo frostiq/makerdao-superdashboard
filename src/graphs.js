@@ -126,16 +126,16 @@ export function drawBalanceChart(debtPoints, collateralUsdPoints, minTime, maxTi
                 {
                     label: 'Collateral amount',
                     lineTension: 0,
-                    backgroundColor: 'black',
-                    borderColor: 'orange',
+                backgroundColor: '#FF93A8',
+                borderColor: '#FF93A8',
                     fill: false,
                     data: collateralUsdPoints
                 },
                 {
                     label: 'Debt amount',
                     lineTension: 0,
-                    backgroundColor: 'black',
-                    borderColor: 'grey',
+                  backgroundColor: '#00C2C2',
+                  borderColor: '#00C2C2',
                     fill: false,
                     data: debtPoints
                 }]
