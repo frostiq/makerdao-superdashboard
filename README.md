@@ -20,7 +20,7 @@ The following charts display:
 
 **MakerDAO SuperDashboard is distributed through IPFS**
 
-![Presentation link]( https://www.dropbox.com/s/mp6ma41m1ficp85/BloqInfo-details.pdf?dl=0)
+[Presentation link]( https://www.dropbox.com/s/mp6ma41m1ficp85/BloqInfo-details.pdf?dl=0)
 
 ## Requirements
 
