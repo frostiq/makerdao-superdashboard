@@ -8,15 +8,16 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, m
             datasets: [
                 {
                     label: 'Collateralization rate',
-                    backgroundColor: 'black',
-                    borderColor: 'orange',
+                    backgroundColor: 'rgb(255, 158, 128)',
+                    borderColor: 'rgb(255, 158, 128)',
                     fill: false,
                     data: collatRatioPoints
                 },
                 {
                     label: 'ETH/USD Rate',
-                    backgroundColor: 'black',
-                    borderColor: 'grey',
+                    backgroundColor: 'rgb(64,224,208)',
+                    borderColor: 'rgb(64,224,208)',
+                    borderDash: [4, 5],
                     fill: false,
                     data: filteredRatePoints
                 }]
