@@ -1,5 +1,5 @@
 {
-  "name": "webpack4-starter-kit",
+  "name": "makerdao-analytics",
   "version": "1.0.5",
   "description": "Webpack 4 starter kit",
   "main": "./src/index.js",
@@ -12,9 +12,8 @@
     "prehttpserver": "yarn build",
     "httpserver": "http-server ./dist -p 8082 --silent"
   },
-  "author": "Giorgio Gamberoni <giorgio.gamberoni@gmail.com> (https://github.com/king-prawns)",
   "license": "MIT",
-  "homepage": "https://github.com/king-prawns/webpack4-starter-kit#readme",
+  "homepage": "https://github.com/groschovskiy/bloqboard-hackathon#readme",
   "ava": {
     "files": [
       "./src/**/*test.js"
