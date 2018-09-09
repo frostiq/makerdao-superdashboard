@@ -28,13 +28,11 @@ function collateralization_chart_func() {
                         };
                     });
 
-                    var firstDate = _.min(cdp_data.map(p => p.time))
-                    console.log(`first date: ${firstDate}`)
+                    var minTime = _.min(cdp_data.map(p => p.time))
+                    var maxTime = _.max(cdp_data.map(p => p.time))
+                    console.log(`first date: ${minTime}`)
 
-                    var filteredRatePoints = rates.filter(p => p.x.isAfter(firstDate));
-
-                    var maxTime = filteredRatePoints[filteredRatePoints.length - 1].x;
-                    var minTime = filteredRatePoints[0].x;
+                    var filteredRatePoints = rates.filter(p => p.x.isAfter(minTime) && p.x.isBefore(maxTime));
 
                     var collatRatioPoints = filteredRatePoints.map(i => {
                         var currentDt = i.x;
