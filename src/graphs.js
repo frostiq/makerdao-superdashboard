@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, maxTime) {
+export function drawRatioChart(collatRatioPoints, filteredRatePoints, lquiRatePoints, minTime, maxTime) {
     var ctx_chart = document.getElementById("collateralization-chart");
     new Chart(ctx_chart, {
         type: 'line',
@@ -8,8 +8,8 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, m
             datasets: [
                 {
                     label: 'Collateralization rate',
-                backgroundColor: '#FF93A8',
-                borderColor: '#FF93A8',
+                    backgroundColor: '#FF93A8',
+                    borderColor: '#FF93A8',
                     fill: false,
                     data: collatRatioPoints
                 },
@@ -20,7 +20,16 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, m
                     borderDash: [4, 5],
                     fill: false,
                     data: filteredRatePoints
-                }]
+                },
+                {
+                    label: 'ETH/USD Liquidation Rate',
+                    backgroundColor: 'rgb(64,224,208)',
+                    borderColor: 'rgb(64,224,208)',
+                    borderDash: [4, 5],
+                    fill: false,
+                    data: lquiRatePoints
+                }
+            ]
         },
         options: {
             title: {
@@ -61,7 +70,7 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, m
                         mode: 'horizontal',
                         scaleID: 'y-axis-0',
                         value: '150',
-                    borderColor: '#FFCB54',
+                        borderColor: '#FFCB54',
                         borderWidth: 2,
                     }
                 ]
@@ -126,16 +135,16 @@ export function drawBalanceChart(debtPoints, collateralUsdPoints, minTime, maxTi
                 {
                     label: 'Collateral amount',
                     lineTension: 0,
-                backgroundColor: '#FF93A8',
-                borderColor: '#FF93A8',
+                    backgroundColor: '#FF93A8',
+                    borderColor: '#FF93A8',
                     fill: false,
                     data: collateralUsdPoints
                 },
                 {
                     label: 'Debt amount',
                     lineTension: 0,
-                  backgroundColor: '#88C876',
-                  borderColor: '#88C876',
+                    backgroundColor: '#88C876',
+                    borderColor: '#88C876',
                     fill: false,
                     data: debtPoints
                 }]
@@ -186,8 +195,8 @@ export function drawEventsChart(debtPoints, minTime, maxTime) {
         datasets.push({
             label: key,
             lineTension: 0,
-          backgroundColor: '#C38FF7',
-          borderColor: '#C38FF7',
+            backgroundColor: '#C38FF7',
+            borderColor: '#C38FF7',
             fill: false,
             data: groupped[key]
         })

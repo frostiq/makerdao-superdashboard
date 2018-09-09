@@ -52,8 +52,20 @@ function collateralization_chart_func() {
                         return { x: currentDt, y: ratio };
                     });
 
+                    var liquidationPrice = filteredRatePoints.map(i => {
+                        var currentDt = i.x;
 
-                    drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, maxTime);
+                        var previous_cdp_states = cdp_data.filter(p => p.time.isSameOrBefore(currentDt))
+                        var cdp_state = _.maxBy(previous_cdp_states, x => x.time);
+
+
+                        var liquiPrice = cdp_state.art * 1.5 / cdp_state.ink;
+
+                        return { x: currentDt, y: liquiPrice };
+                    });
+
+
+                    drawRatioChart(collatRatioPoints, filteredRatePoints, liquidationPrice, minTime, maxTime);
 
                     var mdTimeSeries = cdp_data.map(function (item) {
                         return {
