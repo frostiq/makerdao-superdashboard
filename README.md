@@ -1,5 +1,5 @@
 # MakerDAO SuperDashboard
-by 44Finney team
+### by 44Finney team
 
 We created a tool that helps Maker DAO’s CDP owners analyze balances and performance of their collateral.
 
