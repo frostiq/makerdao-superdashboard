@@ -15,26 +15,26 @@ module.exports = merge(base, {
   // devtool : 'source-map', // remove this comment if you want JS source maps
   output : {
     path       : path.resolve(__dirname, '../dist'),
-    publicPath : '/',
+    publicPath : './',
     filename   : '[chunkhash].app.js'
   },
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        cache     : true,
-        parallel  : true,
-        sourceMap : false // set to true if you want JS source maps
-      }),
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorOptions: {
-          map: {
-            inline     : false,
-            annotation : true
-          }
-        }
-      })
-    ]
-  },
+  // optimization: {
+  //   minimizer: [
+  //     new UglifyJsPlugin({
+  //       cache     : true,
+  //       parallel  : true,
+  //       sourceMap : false // set to true if you want JS source maps
+  //     }),
+  //     new OptimizeCSSAssetsPlugin({
+  //       cssProcessorOptions: {
+  //         map: {
+  //           inline     : false,
+  //           annotation : true
+  //         }
+  //       }
+  //     })
+  //   ]
+  // },
   module: {
     rules: [{
       test : /(\.css|\.pcss)$/,
