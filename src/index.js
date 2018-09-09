@@ -1,4 +1,5 @@
 import { request } from 'graphql-request';
+const _ = require('lodash');
 
 function collateralization_chart_func() {
 	function cdpMap(item)
@@ -39,24 +40,23 @@ function collateralization_chart_func() {
 			 	.then(function(response) {
 			 		var rates = response.data.Data.map(rateMap);
 
-			 		var firstDate = cdp_data.map(p => p.time).sort(function(a,b) {
-        				return b.isBefore(a);
-   					 })[0];
+					var firstDate = _.min(cdp_data.map(p => p.time))
+					console.log(`first date: ${firstDate}`)
 
-			 		var filteredRatePoints = rates.filter(p => firstDate.isBefore(p.x));
+					var filteredRatePoints = rates.filter(p => p.x.isAfter(firstDate));
+					 
+					var maxTime = filteredRatePoints[filteredRatePoints.length - 1].x;
+					var minTime = filteredRatePoints[0].x;
 
-			 		var perDayPoints = new Array();
-			 		filteredRatePoints.forEach(i => {
-			 			var currentDt = i.x;
+			 		var collatRatioPoints = filteredRatePoints.map(i => {
+						var currentDt = i.x;
 
-			 			var target_cdp_state = cdp_data.filter(p => currentDt.isAfter(p.time))
-				 			.sort(function(a,b) {
-		        				return b.time.isAfter(a.time);
-		   					 })[0];;
+						var previous_cdp_state = cdp_data.filter(p => p.time.isBefore(currentDt) && p.ratio)
+						var cdp_state = _.maxBy(previous_cdp_state, x => x.time);
+						 
+			 			var ratio = 100 * cdp_state.ink * i.y / cdp_state.art;
 
-			 			var ratio = 100 * target_cdp_state.ink * i.y / target_cdp_state.art;
-
-			 			perDayPoints.push({x: i.x, y: ratio });
+			 			return { x: currentDt, y: ratio };
 			 		});
 
 			 		var ctx_chart = document.getElementById("collateralization-chart");		 		
@@ -69,7 +69,7 @@ function collateralization_chart_func() {
 						backgroundColor: 'black',
 						borderColor: 'orange',
 						fill: false,
-						data: perDayPoints
+						data: collatRatioPoints
 					},
 					{
 						label: 'ETH/USD Rate',
@@ -132,7 +132,9 @@ function collateralization_chart_func() {
 									labelString: 'Date'
 								},
 								time:{
-									unit: 'day'
+									unit: 'day',
+									min: minTime,
+									max: maxTime
 								}
 							}],
 							yAxes: [{

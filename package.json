@@ -80,6 +80,7 @@
     "@babel/runtime": "7.0.0",
     "@webcomponents/webcomponentsjs": "2.0.4",
     "axios": "^0.18.0",
-    "graphql-request": "^1.8.2"
+    "graphql-request": "^1.8.2",
+    "lodash": "^4.17.10"
   }
 }
