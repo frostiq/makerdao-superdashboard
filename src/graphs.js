@@ -8,8 +8,8 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, m
             datasets: [
                 {
                     label: 'Collateralization rate',
-                    backgroundColor: 'rgb(255, 158, 128)',
-                    borderColor: 'rgb(255, 158, 128)',
+                backgroundColor: '#FF567A',
+                borderColor: '#FF567A',
                     fill: false,
                     data: collatRatioPoints
                 },
@@ -61,7 +61,7 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, m
                         mode: 'horizontal',
                         scaleID: 'y-axis-0',
                         value: '150',
-                        borderColor: 'red',
+                    borderColor: '#FFCB54',
                         borderWidth: 2,
                     }
                 ]
