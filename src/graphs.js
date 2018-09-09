@@ -35,7 +35,7 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, lquiRatePo
           
         title: {
           display: true,
-          text: 'Collateral Performance'
+          text: 'COLLATERAL PERFORMANCE'
             },
             plugins: {
                 datalabels: {
@@ -98,7 +98,7 @@ export function drawScatterChart(mdTimeSeries, minTime, maxTime) {
         options: {
           title: {
             display: true,
-            text: 'Scatter view'
+            text: 'SCATTER VIEW'
             },
             plugins: {
                 datalabels: {
@@ -157,7 +157,7 @@ export function drawBalanceChart(debtPoints, collateralUsdPoints, minTime, maxTi
         options: {
           title: {
             display: true,
-                text: 'CDP Operations'
+            text: 'CDP OPERATIONS'
             },
             plugins: {
                 datalabels: {
@@ -216,7 +216,7 @@ export function drawEventsChart(debtPoints, minTime, maxTime) {
         options: {
           title: {
             display: true,
-                text: 'Events History'
+            text: 'SEQUENTIAL LINE'
             },
             maintainAspectRatio: false,
             plugins: {
