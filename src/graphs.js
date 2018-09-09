@@ -23,6 +23,11 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, m
             title: {
                 text: 'CDP Chart'
             },
+            plugins: {
+                datalabels: {
+                    display: false
+                }
+            },
             scales: {
                 xAxes: [{
                     type: 'time',
@@ -78,6 +83,11 @@ export function drawScatterChart(mdTimeSeries, minTime, maxTime) {
             title: {
                 text: 'CDP Chart'
             },
+            plugins: {
+                datalabels: {
+                    display: false
+                }
+            },
             scales: {
                 xAxes: [{
                     type: 'time',
@@ -131,6 +141,11 @@ export function drawBalanceChart(debtPoints, collateralUsdPoints, minTime, maxTi
             title: {
                 text: 'CDP Chart'
             },
+            plugins: {
+                datalabels: {
+                    display: false
+                }
+            },
             scales: {
                 xAxes: [{
                     type: 'time',
@@ -154,6 +169,67 @@ export function drawBalanceChart(debtPoints, collateralUsdPoints, minTime, maxTi
                     }
                 }]
             },
+        }
+    });
+}
+
+export function drawEventsChart(debtPoints, labels, minTime, maxTime) {
+    var ctx_chart = document.getElementById("events-chart");
+    new Chart(ctx_chart, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Events',
+                    lineTension: 0,
+                    backgroundColor: 'black',
+                    borderColor: 'orange',
+                    fill: false,
+                    data: debtPoints
+                }
+            ]
+        },
+        options: {
+            title: {
+                text: 'Events Chart'
+            },
+            maintainAspectRatio: false,
+            plugins: {
+                datalabels: {
+                    backgroundColor: function (context) {
+                        return context.dataset.backgroundColor;
+                    },
+                    borderRadius: 4,
+                    color: 'white',
+                    rotation: -90,
+                    // font: {
+                    //     weight: 'bold'
+                    // },
+                    formatter: function (value, context) {
+                        return context.chart.data.labels[context.dataIndex];
+                    }
+                }
+            },
+            scales: {
+                xAxes: [{
+                    type: 'time',
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Date'
+                    },
+                    time: {
+                        unit: 'day',
+                        min: minTime,
+                        max: maxTime
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        display: false
+                    }
+                }]
+            }
         }
     });
 }
