@@ -3,6 +3,8 @@
 
 We created a tool that helps Maker DAO’s CDP owners analyze balances and performance of their collateral.
 
+![Screenshot](screenshot.png)
+
 The following charts display:
 
 - Collateralization rates of CDP over time taking into account the following events:
