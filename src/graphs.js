@@ -44,6 +44,18 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints) {
                     }
                 }]
             },
+            annotation: {
+                annotations: [
+                    {
+                        type: 'line',
+                        mode: 'horizontal',
+                        scaleID: 'y-axis-0',
+                        value: '150',
+                        borderColor: 'red',
+                        borderWidth: 2,
+                    }
+                ]
+            }
         }
     });
 }
