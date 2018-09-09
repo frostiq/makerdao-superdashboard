@@ -31,8 +31,10 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, lquiRatePo
                 }
             ]
         },
-        options: {
-            title: {
+      options: {
+          
+        title: {
+          display: true,
                 text: 'CDP Chart'
             },
             plugins: {
@@ -94,7 +96,8 @@ export function drawScatterChart(mdTimeSeries, minTime, maxTime) {
             }]
         },
         options: {
-            title: {
+          title: {
+            display: true,
                 text: 'CDP Chart'
             },
             plugins: {
@@ -152,7 +155,8 @@ export function drawBalanceChart(debtPoints, collateralUsdPoints, minTime, maxTi
                 }]
         },
         options: {
-            title: {
+          title: {
+            display: true,
                 text: 'CDP Chart'
             },
             plugins: {
@@ -210,7 +214,8 @@ export function drawEventsChart(debtPoints, minTime, maxTime) {
             datasets: datasets
         },
         options: {
-            title: {
+          title: {
+            display: true,
                 text: 'Events Chart'
             },
             maintainAspectRatio: false,
