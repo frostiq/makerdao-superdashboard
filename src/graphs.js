@@ -8,8 +8,8 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, m
             datasets: [
                 {
                     label: 'Collateralization rate',
-                    backgroundColor: 'rgb(255, 158, 128)',
-                    borderColor: 'rgb(255, 158, 128)',
+                backgroundColor: '#FF93A8',
+                borderColor: '#FF93A8',
                     fill: false,
                     data: collatRatioPoints
                 },
@@ -61,7 +61,7 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, m
                         mode: 'horizontal',
                         scaleID: 'y-axis-0',
                         value: '150',
-                        borderColor: 'red',
+                    borderColor: '#FFCB54',
                         borderWidth: 2,
                     }
                 ]
@@ -126,16 +126,16 @@ export function drawBalanceChart(debtPoints, collateralUsdPoints, minTime, maxTi
                 {
                     label: 'Collateral amount',
                     lineTension: 0,
-                    backgroundColor: 'black',
-                    borderColor: 'orange',
+                backgroundColor: '#FF93A8',
+                borderColor: '#FF93A8',
                     fill: false,
                     data: collateralUsdPoints
                 },
                 {
                     label: 'Debt amount',
                     lineTension: 0,
-                    backgroundColor: 'black',
-                    borderColor: 'grey',
+                  backgroundColor: '#88C876',
+                  borderColor: '#88C876',
                     fill: false,
                     data: debtPoints
                 }]
@@ -186,8 +186,8 @@ export function drawEventsChart(debtPoints, minTime, maxTime) {
         datasets.push({
             label: key,
             lineTension: 0,
-            backgroundColor: 'black',
-            borderColor: 'orange',
+          backgroundColor: '#C38FF7',
+          borderColor: '#C38FF7',
             fill: false,
             data: groupped[key]
         })
