@@ -8,8 +8,8 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, m
             datasets: [
                 {
                     label: 'Collateralization rate',
-                backgroundColor: '#FF567A',
-                borderColor: '#FF567A',
+                backgroundColor: '#FF93A8',
+                borderColor: '#FF93A8',
                     fill: false,
                     data: collatRatioPoints
                 },
