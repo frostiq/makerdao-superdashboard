@@ -31,15 +31,20 @@ function collateralization_chart_func() {
 
                     var minTime = _.min(cdp_data.map(p => p.time))
                     var maxTime = _.max(cdp_data.map(p => p.time))
-                    console.log(`first date: ${minTime}`)
 
                     var filteredRatePoints = rates.filter(p => p.x.isAfter(minTime) && p.x.isBefore(maxTime));
+
+                    // adding the first point artificially
+                    filteredRatePoints.unshift({
+                        x: minTime,
+                        y: filteredRatePoints[0].y
+                    });
 
                     var collatRatioPoints = filteredRatePoints.map(i => {
                         var currentDt = i.x;
 
-                        var previous_cdp_state = cdp_data.filter(p => p.time.isBefore(currentDt) && p.ratio)
-                        var cdp_state = _.maxBy(previous_cdp_state, x => x.time);
+                        var previous_cdp_states = cdp_data.filter(p => p.time.isSameOrBefore(currentDt))
+                        var cdp_state = _.maxBy(previous_cdp_states, x => x.time);
 
                         var ratio = 100 * cdp_state.ink * i.y / cdp_state.art;
 

@@ -226,7 +226,7 @@ export function drawEventsChart(debtPoints, labels, minTime, maxTime) {
                 }],
                 yAxes: [{
                     ticks: {
-                        display: false
+                        //display: false
                     }
                 }]
             }
