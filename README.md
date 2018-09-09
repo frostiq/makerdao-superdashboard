@@ -3,6 +3,8 @@
 
 We created a tool that helps Maker DAO’s CDP owners analyze balances and performance of their collateral.
 
+![Screenshot](screenshot.png)
+
 The following charts display:
 
 - Collateralization rates of CDP over time taking into account the following events:
@@ -18,6 +20,7 @@ The following charts display:
 
 **MakerDAO SuperDashboard is distributed through IPFS**
 
+[Presentation link]( https://www.dropbox.com/s/mp6ma41m1ficp85/BloqInfo-details.pdf?dl=0)
 
 ## Requirements
 
