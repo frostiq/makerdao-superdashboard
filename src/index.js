@@ -93,6 +93,13 @@ function collateralization_chart_func() {
         });
     };
 
+    document.getElementById('cdp-id').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            var cdp_id = document.getElementById('cdp-id').value;
+            reloadData(cdp_id);
+        }
+    });
+
     document.getElementById('update').addEventListener('click', function () {
         var cdp_id = document.getElementById('cdp-id').value;
         reloadData(cdp_id);
