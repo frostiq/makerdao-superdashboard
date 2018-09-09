@@ -7,14 +7,14 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, lquiRatePo
         data: {
             datasets: [
                 {
-                    label: 'Collateralization rate',
+                    label: 'Collateralization Ratio',
                     backgroundColor: '#FF93A8',
                     borderColor: '#FF93A8',
                     fill: false,
                     data: collatRatioPoints
                 },
                 {
-                    label: 'ETH/USD Rate',
+                    label: 'ETH/USD Ratio',
                     backgroundColor: 'rgb(64,224,208)',
                     borderColor: 'rgb(64,224,208)',
                     borderDash: [4, 5],
@@ -22,7 +22,7 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, lquiRatePo
                     data: filteredRatePoints
                 },
                 {
-                    label: 'ETH/USD Liquidation Rate',
+                    label: 'ETH/USD Liquidation Ratio',
                   backgroundColor: '#CE966A',
                   borderColor: '#CE966A',
                     borderDash: [4, 5],
@@ -35,7 +35,7 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints, lquiRatePo
           
         title: {
           display: true,
-          text: 'Collateralization Rate Chart'
+          text: 'Collateral Performance'
             },
             plugins: {
                 datalabels: {
@@ -157,7 +157,7 @@ export function drawBalanceChart(debtPoints, collateralUsdPoints, minTime, maxTi
         options: {
           title: {
             display: true,
-                text: 'CDP Chart'
+                text: 'CDP Operations'
             },
             plugins: {
                 datalabels: {
