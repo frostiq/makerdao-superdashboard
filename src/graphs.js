@@ -216,7 +216,7 @@ export function drawEventsChart(debtPoints, minTime, maxTime) {
         options: {
           title: {
             display: true,
-                text: 'Events Chart'
+                text: 'Events History'
             },
             maintainAspectRatio: false,
             plugins: {
