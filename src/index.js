@@ -1,9 +1,6 @@
 import { request } from 'graphql-request';
 
 function collateralization_chart_func() {
-	var timeFormat = 'MM/DD/YYYY HH:mm';
-
-
 	function cdpMap(item)
 	{
 		return {
@@ -56,55 +53,96 @@ function collateralization_chart_func() {
 			 			perDayPoints.push({x: i.x, y: ratio });
 			 		});
 
-			 		var ctx = document.getElementById("collateralization-chart");
-
-			 		var mdTimeSeries = cdp_data.map(timeSeriesMap);
-
-					var myChart = new Chart(ctx, {
+			 		var ctx_chart = document.getElementById("collateralization-chart");		 		
+					var myChart = new Chart(ctx_chart, {
 					type: 'line',
 					data: {
+					datasets: [
+					{
+						label: 'Collateralization rate',
+						backgroundColor: 'black',
+						borderColor: 'orange',
+						fill: false,
+						data: perDayPoints
+					},
+					{
+						label: 'ETH/USD Rate',
+						backgroundColor: 'orange',
+						borderColor: 'black',
+						fill: false,
+						data: filteredRatePoints
+					}]
+					},
+					options: {
+						title: {
+							text: 'CDP Chart'
+						},
+						scales: {
+							xAxes: [{
+								type: 'time',
+								scaleLabel: {
+									display: true,
+									labelString: 'Date'
+								},
+								time:{
+									unit: 'day'
+								}
+							}],
+							yAxes: [{
+								ticks: {
+									min: 100
+								},
+								scaleLabel: {
+									display: true,
+									labelString: 'Сollateral-to-debt Ratio, %'
+								}
+							}]
+						},
+					}
+				});
+
+					var mdTimeSeries = cdp_data.map(timeSeriesMap);
+					var ctx_scatter = document.getElementById("collateralization-scatter");		 		
+
+					var myChart = new Chart(ctx_scatter, {
+					type: 'scatter',
+					data: {
 					datasets: [{
-						label: 'Makerdao',
+						label: 'Makerdao Operations',
 						backgroundColor: 'rgb(255, 99, 132)',
 						borderColor: 'rgb(255, 99, 132)',
 						fill: false,
 						data: mdTimeSeries
-					},
-					{
-						label: 'We',
-						backgroundColor: 'rgb(255, 165, 0)',
-						borderColor: 'rgb(255, 99, 132)',
-						fill: false,
-						data: perDayPoints
 					}]
-				},
-				options: {
-					title: {
-						text: 'CDP Chart'
 					},
-					scales: {
-						xAxes: [{
-							type: 'time',
-							scaleLabel: {
-								display: true,
-								labelString: 'Date'
-							},
-							time:{
-								unit: 'day'
-							}
-						}],
-						yAxes: [{
-							ticks: {
-								min: 100
-							},
-							scaleLabel: {
-								display: true,
-								labelString: 'Сollateral-to-debt Ratio, %'
-							}
-						}]
-					},
-				}
-			});
+					options: {
+						title: {
+							text: 'CDP Chart'
+						},
+						scales: {
+							xAxes: [{
+								type: 'time',
+								scaleLabel: {
+									display: true,
+									labelString: 'Date'
+								},
+								time:{
+									unit: 'day'
+								}
+							}],
+							yAxes: [{
+								ticks: {
+									min: 100
+								},
+								scaleLabel: {
+									display: true,
+									labelString: 'Сollateral-to-debt Ratio, %'
+								}
+							}]
+						},
+					}
+				});
+
 			});
 		});
 	};
