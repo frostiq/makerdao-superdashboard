@@ -186,8 +186,8 @@ export function drawEventsChart(debtPoints, minTime, maxTime) {
         datasets.push({
             label: key,
             lineTension: 0,
-            backgroundColor: 'black',
-            borderColor: 'orange',
+          backgroundColor: '#C38FF7',
+          borderColor: '#C38FF7',
             fill: false,
             data: groupped[key]
         })
