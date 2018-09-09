@@ -14,7 +14,9 @@ The following charts display:
     - Wipe
     - Bite
 - Collateral amount and Debt amount over time
-- Scattered collateralization 
+- Scattered collateralization
+
+**MakerDAO SuperDashboard is distributed through IPFS**
 
 
 ## Requirements
