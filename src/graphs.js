@@ -1,4 +1,4 @@
-export function drawRatioChart(collatRatioPoints, filteredRatePoints) {
+export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, maxTime) {
     var ctx_chart = document.getElementById("collateralization-chart");
     new Chart(ctx_chart, {
         type: 'line',
@@ -31,7 +31,9 @@ export function drawRatioChart(collatRatioPoints, filteredRatePoints) {
                         labelString: 'Date'
                     },
                     time: {
-                        unit: 'day'
+                        unit: 'day',
+                        min: minTime,
+                        max: maxTime
                     }
                 }],
                 yAxes: [{
@@ -102,7 +104,7 @@ export function drawScatterChart(mdTimeSeries, minTime, maxTime) {
     });
 }
 
-export function drawBalanceChart(debtPoints, collateralUsdPoints) {
+export function drawBalanceChart(debtPoints, collateralUsdPoints, minTime, maxTime) {
     var ctx_chart = document.getElementById("balance-chart");
     new Chart(ctx_chart, {
         type: 'line',
@@ -137,7 +139,9 @@ export function drawBalanceChart(debtPoints, collateralUsdPoints) {
                         labelString: 'Date'
                     },
                     time: {
-                        unit: 'day'
+                        unit: 'day',
+                        min: minTime,
+                        max: maxTime
                     }
                 }],
                 yAxes: [{

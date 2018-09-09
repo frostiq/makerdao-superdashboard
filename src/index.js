@@ -48,7 +48,7 @@ function collateralization_chart_func() {
                     });
 
 
-                    drawRatioChart(collatRatioPoints, filteredRatePoints);
+                    drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, maxTime);
 
                     var mdTimeSeries = cdp_data.map(function (item) {
                         return {
@@ -73,7 +73,7 @@ function collateralization_chart_func() {
                         };
                     });
 
-                    drawBalanceChart(debtTimeSeries, collateralUsdTimeSeries);
+                    drawBalanceChart(debtTimeSeries, collateralUsdTimeSeries, minTime, maxTime);
                 });
         });
     };
