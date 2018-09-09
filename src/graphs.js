@@ -196,7 +196,6 @@ export function drawEventsChart(debtPoints, minTime, maxTime) {
     new Chart(ctx_chart, {
         type: 'line',
         data: {
-            labels: labels,
             datasets: datasets
         },
         options: {
@@ -224,7 +223,7 @@ export function drawEventsChart(debtPoints, minTime, maxTime) {
                 }],
                 yAxes: [{
                     ticks: {
-                        //display: false
+                        display: false
                     }
                 }]
             }
