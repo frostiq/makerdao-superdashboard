@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 export function drawRatioChart(collatRatioPoints, filteredRatePoints, minTime, maxTime) {
     var ctx_chart = document.getElementById("collateralization-chart");
     new Chart(ctx_chart, {
@@ -173,22 +175,28 @@ export function drawBalanceChart(debtPoints, collateralUsdPoints, minTime, maxTi
     });
 }
 
-export function drawEventsChart(debtPoints, labels, minTime, maxTime) {
+export function drawEventsChart(debtPoints, minTime, maxTime) {
     var ctx_chart = document.getElementById("events-chart");
+
+    var groupped = _.groupBy(debtPoints, x => x.act);
+    var datasets = [];
+
+    for (var key in groupped) {
+        datasets.push({
+            label: key,
+            lineTension: 0,
+            backgroundColor: 'black',
+            borderColor: 'orange',
+            fill: false,
+            data: groupped[key]
+        })
+    }
+
     new Chart(ctx_chart, {
         type: 'line',
         data: {
             labels: labels,
-            datasets: [
-                {
-                    label: 'Events',
-                    lineTension: 0,
-                    backgroundColor: 'black',
-                    borderColor: 'orange',
-                    fill: false,
-                    data: debtPoints
-                }
-            ]
+            datasets: datasets
         },
         options: {
             title: {
@@ -197,18 +205,7 @@ export function drawEventsChart(debtPoints, labels, minTime, maxTime) {
             maintainAspectRatio: false,
             plugins: {
                 datalabels: {
-                    backgroundColor: function (context) {
-                        return context.dataset.backgroundColor;
-                    },
-                    borderRadius: 4,
-                    color: 'white',
-                    rotation: -90,
-                    // font: {
-                    //     weight: 'bold'
-                    // },
-                    formatter: function (value, context) {
-                        return context.chart.data.labels[context.dataIndex];
-                    }
+                    display: false
                 }
             },
             scales: {

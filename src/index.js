@@ -79,16 +79,15 @@ function collateralization_chart_func() {
 
                     drawBalanceChart(debtTimeSeries, collateralUsdTimeSeries, minTime, maxTime);
 
-                    var labels = cdp_data.map(x => x.act);
-
                     var eventsTimeSeries = cdp_data.map(function (item) {
                         return {
                             x: item.time.toDate(),
-                            y: 0
+                            y: 0,
+                            act: item.act
                         };
                     });
 
-                    drawEventsChart(eventsTimeSeries, labels, minTime, maxTime)
+                    drawEventsChart(eventsTimeSeries, minTime, maxTime)
                 });
         });
     };
